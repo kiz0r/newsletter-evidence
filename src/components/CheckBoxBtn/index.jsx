@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import './CheckBoxBtn.sass';
 
 const CheckBoxBtn = ({ imageSrc, checkBoxName, isChecked, setIsChecked }) => {

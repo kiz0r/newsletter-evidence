@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import styles from './../../common/styles/NewsletterEvidence.module.sass';
 const { userNameInput, inputValid, inputInvalid, formLabel } = styles;
 
+// username regular expression for validation
 const USERNAME_REG_EXP =
   /^[A-Z][a-z]{1,19}(-[A-Z][a-z]{1,19})?\s[A-Z][a-z]{1,19}(-[A-Z][a-z]{1,19})?$/;
 
@@ -18,6 +19,7 @@ const UserNameInput = ({ value, setValue }) => {
     validateUserNameInput();
   }, [value]);
 
+  // create a unique classname depends on isValid
   const inputClassname = classNames(
     userNameInput,
     `${isValid ? inputValid : inputInvalid}`
