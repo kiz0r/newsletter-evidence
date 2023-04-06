@@ -1,4 +1,5 @@
 import './CheckBoxBtn.sass';
+import PropTypes from 'prop-types';
 
 const CheckBoxBtn = ({ imageSrc, checkBoxName, isChecked, setIsChecked }) => {
   const handleCheckboxClick = ({ target: { checked } }) => {
@@ -18,6 +19,13 @@ const CheckBoxBtn = ({ imageSrc, checkBoxName, isChecked, setIsChecked }) => {
       </button>
     </label>
   );
+};
+
+CheckBoxBtn.propTypes = {
+  imageSrc: PropTypes.string,
+  checkBoxName: PropTypes.string,
+  isChecked: PropTypes.bool,
+  setIsChecked: PropTypes.func,
 };
 
 export default CheckBoxBtn;

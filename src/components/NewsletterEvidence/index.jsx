@@ -13,6 +13,7 @@ import CustomButton from '../CustomButton';
 
 const { evidenceWrapper, pageForm, btnWrapper } = styles;
 
+// initial state of the form
 const INITIAL_FORM_STATE = {
   username: '',
   isCheckedMoon: false,
@@ -23,6 +24,7 @@ const INITIAL_FORM_STATE = {
 const NewsletterEvidence = () => {
   // useState for <UserNameInput/>
   const [value, setValue] = useState(INITIAL_FORM_STATE.username);
+
   // useStates for <CheckBoxBtn/>
   const [isCheckedMoon, setIsCheckedMoon] = useState(
     INITIAL_FORM_STATE.isCheckedMoon
@@ -34,6 +36,7 @@ const NewsletterEvidence = () => {
     INITIAL_FORM_STATE.isCheckedPainting
   );
 
+  // used to reset the form to the initial state
   const handleCancel = () => {
     setValue(INITIAL_FORM_STATE.username);
     setIsCheckedMoon(INITIAL_FORM_STATE.isCheckedMoon);
@@ -43,15 +46,15 @@ const NewsletterEvidence = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // handle form submission
-    const formDataToSave = {
+
+    const jsonFormData = JSON.stringify({
       username: value,
       moonChecked: isCheckedMoon,
       pawChecked: isCheckedPaw,
       paintingChecked: isCheckedPainting,
-    };
+    });
 
-    console.log(formDataToSave);
+    console.log(jsonFormData);
   };
 
   return (
