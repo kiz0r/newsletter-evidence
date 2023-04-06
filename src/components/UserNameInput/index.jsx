@@ -8,9 +8,7 @@ const { userNameInput, inputValid, inputInvalid, formLabel } = styles;
 const USERNAME_REG_EXP =
   /^[A-Z][a-z]{1,19}(-[A-Z][a-z]{1,19})?\s[A-Z][a-z]{1,19}(-[A-Z][a-z]{1,19})?$/;
 
-const UserNameInput = ({ value, setValue }) => {
-  const [isValid, setIsValid] = useState(false);
-
+const UserNameInput = ({ value, setValue, isValid, setIsValid }) => {
   function validateUserNameInput() {
     setIsValid(USERNAME_REG_EXP.test(value));
   }
