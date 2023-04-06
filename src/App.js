@@ -1,11 +1,7 @@
-import UserNameInput from './components/UserNameInput';
+import NewsletterEvidence from './components/NewsletterEvidence';
 
 function App() {
-  return (
-    <form>
-      <UserNameInput />
-    </form>
-  );
+  return <NewsletterEvidence />;
 }
 
 export default App;
