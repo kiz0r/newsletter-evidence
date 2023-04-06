@@ -7,8 +7,7 @@ const { userNameInput, inputValid, inputInvalid, formLabel } = styles;
 const USERNAME_REG_EXP =
   /^[A-Z][a-z]{1,19}(-[A-Z][a-z]{1,19})?\s[A-Z][a-z]{1,19}(-[A-Z][a-z]{1,19})?$/;
 
-const UserNameInput = () => {
-  const [value, setValue] = useState('');
+const UserNameInput = ({ value, setValue }) => {
   const [isValid, setIsValid] = useState(false);
 
   function validateUserNameInput() {
@@ -30,6 +29,7 @@ const UserNameInput = () => {
       <input
         className={inputClassname}
         type="text"
+        name="user-name"
         value={value}
         onChange={({ target: { value } }) => setValue(value)}
         autoFocus
