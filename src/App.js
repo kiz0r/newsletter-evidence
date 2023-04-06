@@ -1,5 +1,11 @@
+import UserNameInput from './components/UserNameInput';
+
 function App() {
-  return <div>hello react</div>;
+  return (
+    <form>
+      <UserNameInput />
+    </form>
+  );
 }
 
 export default App;
