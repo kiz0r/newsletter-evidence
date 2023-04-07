@@ -1,19 +1,16 @@
 import PageHeader from './components/PageHeader';
+import PageMain from './components/PageMain';
 import NewsletterEvidence from './components/NewsletterEvidence';
+import PageFooter from './components/PageFooter';
 
 function App() {
   return (
     <>
       <PageHeader />
-      <main
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          backgroundColor: '#FFF9DC',
-        }}
-      >
+      <PageMain>
         <NewsletterEvidence />
-      </main>
+      </PageMain>
+      <PageFooter>Kyrylo Khomenko </PageFooter>
     </>
   );
 }
