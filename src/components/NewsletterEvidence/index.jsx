@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import PageHeader from '../PageHeader';
 import UserNameInput from './../UserNameInput';
 import CheckBoxBtn from '../CheckBoxBtn';
 
@@ -100,13 +99,6 @@ const NewsletterEvidence = () => {
           Enter Your name and select picture and I will save it in locale
           storage
         </span>
-        <FaSearch className={searchIcon} />
-        <input
-          type="text"
-          placeholder="Search by username"
-          className={searchInput}
-          onChange={handleSearch}
-        />
         <UserNameInput
           value={value}
           setValue={setValue}
