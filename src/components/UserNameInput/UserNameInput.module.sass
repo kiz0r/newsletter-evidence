@@ -1,0 +1,20 @@
+@import '../../common/styles/mixins'
+
+.userNameInput 
+  padding: 14px 
+  font-size: 16px
+  outline: none
+  width: 250px
+  transition: 0.7s all ease-in-out
+  &.inputValid 
+    border: 2px solid green
+  &.inputInvalid
+    border: 2px solid red
+
+.formLabel
+  @include flex-container($ai:flex-start)
+  gap: 10px
+  &>span
+    font-size: 16px
+    font-weight: 500
+    margin-left:  15px

@@ -9,7 +9,7 @@ function App() {
         style={{
           display: 'flex',
           justifyContent: 'center',
-          backgroundColor: '#C1C5C9',
+          backgroundColor: '#FFF9DC',
         }}
       >
         <NewsletterEvidence />

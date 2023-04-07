@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import styles from './CustomButton.module.sass';
+import classNames from 'classnames';
 
 const { btn } = styles;
 
 // component which uses props.children
-const CustomButton = ({ children, type, onClick }) => {
+const CustomButton = ({ children, type, onClick, modClassName }) => {
+  const btnClassName = classNames(`${modClassName ? modClassName : ''}`, btn);
   return (
-    <button className={btn} type={type} onClick={onClick}>
+    <button className={btnClassName} type={type} onClick={onClick}>
       {children}
     </button>
   );

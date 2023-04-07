@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 
-import styles from './../../common/styles/NewsletterEvidence.module.sass';
+import styles from './UserNameInput.module.sass';
 const { userNameInput, inputValid, inputInvalid, formLabel } = styles;
 
 // username regular expression for validation

@@ -7,10 +7,10 @@ import moonIcon from './../../common/images/moonIcon.png';
 import pawIcon from './../../common/images/pawIcon.png';
 import paintingIcon from './../../common/images/paintingIcon.png';
 
-import styles from './../../common/styles/NewsletterEvidence.module.sass';
+import styles from './NewsletterEvidence.module.sass';
 import CustomButton from '../CustomButton';
 
-const { evidenceWrapper, pageForm, btnWrapper } = styles;
+const { evidenceWrapper, pageForm, btnWrapper, saveBtn, cancelBtn } = styles;
 
 // initial state of the form
 const INITIAL_FORM_STATE = {
@@ -68,13 +68,13 @@ const NewsletterEvidence = () => {
 
     if (userIndex !== -1) {
       parsedData[userIndex] = formData;
-      alert('Your data has been successfully updated!');
       // load user data from localStorage and set isChecked* values
       const userData = parsedData[userIndex];
       setIsCheckedMoon(userData.moonChecked);
       setIsCheckedPaw(userData.pawChecked);
       setIsCheckedPainting(userData.paintingChecked);
       setFoundUser(!foundUser);
+      alert('Your data has been successfully updated!');
     } else {
       parsedData.push(formData);
       alert('Your data has been successfully added!');
@@ -105,10 +105,6 @@ const NewsletterEvidence = () => {
   return (
     <div className={evidenceWrapper}>
       <form action="" className={pageForm}>
-        <span>
-          Enter Your name and select picture and I will save it in locale
-          storage
-        </span>
         <UserNameInput
           value={value}
           setValue={setValue}
@@ -134,10 +130,18 @@ const NewsletterEvidence = () => {
           imageSrc={paintingIcon}
         />
         <div className={btnWrapper}>
-          <CustomButton type="submit" onClick={handleSubmit}>
+          <CustomButton
+            type="submit"
+            onClick={handleSubmit}
+            modClassName={saveBtn}
+          >
             Save
           </CustomButton>
-          <CustomButton type="button" onClick={handleCancel}>
+          <CustomButton
+            type="button"
+            onClick={handleCancel}
+            modClassName={cancelBtn}
+          >
             Cancel
           </CustomButton>
         </div>
