@@ -43,12 +43,15 @@ const NewsletterEvidence = () => {
     INITIAL_FORM_STATE.isCheckedPainting
   );
 
-  const [userList, setUserList] = useState([]);
   const [foundUser, setFoundUser] = useState(false);
 
   // used to reset the form to the initial state
   function handleCancel() {
     setValue(INITIAL_FORM_STATE.username);
+    setInitialStates();
+  }
+
+  function setInitialStates() {
     setIsCheckedMoon(INITIAL_FORM_STATE.isCheckedMoon);
     setIsCheckedPaw(INITIAL_FORM_STATE.isCheckedPaw);
     setIsCheckedPainting(INITIAL_FORM_STATE.isCheckedPainting);
@@ -79,23 +82,23 @@ const NewsletterEvidence = () => {
       setIsCheckedMoon(userData.moonChecked);
       setIsCheckedPaw(userData.pawChecked);
       setIsCheckedPainting(userData.paintingChecked);
-      setFoundUser(true);
     };
 
     const addData = () => {
       parsedData.push(formData);
-      setFoundUser(false);
     };
 
     userIndex !== -1 ? updateData() : addData();
-
     localStorage.setItem('formData', JSON.stringify(parsedData));
-
     handleCancel();
   }
 
   // load checkboxes state from localStorage and update them
   useEffect(() => {
+    if (value === '') {
+      setInitialStates();
+    }
+
     const storedData = localStorage.getItem('formData');
     const parsedData = storedData ? JSON.parse(storedData) : [];
 
@@ -105,8 +108,9 @@ const NewsletterEvidence = () => {
       setIsCheckedMoon(parsedData[userIndex].moonChecked);
       setIsCheckedPaw(parsedData[userIndex].pawChecked);
       setIsCheckedPainting(parsedData[userIndex].paintingChecked);
-      setFoundUser(true);
     }
+
+    setFoundUser(userIndex !== -1); // update foundUser here
   }, [value]);
 
   return (
