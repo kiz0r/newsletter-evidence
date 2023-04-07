@@ -51,6 +51,7 @@ const NewsletterEvidence = () => {
     setInitialStates();
   }
 
+  // setting initial state of the form
   function setInitialStates() {
     setIsCheckedMoon(INITIAL_FORM_STATE.isCheckedMoon);
     setIsCheckedPaw(INITIAL_FORM_STATE.isCheckedPaw);
@@ -104,13 +105,15 @@ const NewsletterEvidence = () => {
 
     const userIndex = parsedData.findIndex((data) => data.username === value);
 
+    // loads data from localStorage
     if (userIndex !== -1) {
       setIsCheckedMoon(parsedData[userIndex].moonChecked);
       setIsCheckedPaw(parsedData[userIndex].pawChecked);
       setIsCheckedPainting(parsedData[userIndex].paintingChecked);
     }
 
-    setFoundUser(userIndex !== -1); // update foundUser here
+    // updates foundUser
+    setFoundUser(userIndex !== -1);
   }, [value]);
 
   return (
