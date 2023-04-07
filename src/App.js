@@ -5,7 +5,13 @@ function App() {
   return (
     <>
       <PageHeader />
-      <main style={{ display: 'flex', justifyContent: 'center' }}>
+      <main
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          backgroundColor: '#C1C5C9',
+        }}
+      >
         <NewsletterEvidence />
       </main>
     </>

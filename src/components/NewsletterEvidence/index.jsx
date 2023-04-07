@@ -69,6 +69,11 @@ const NewsletterEvidence = () => {
     if (userIndex !== -1) {
       parsedData[userIndex] = formData;
       alert('Your data has been successfully updated!');
+      // load user data from localStorage and set isChecked* values
+      const userData = parsedData[userIndex];
+      setIsCheckedMoon(userData.moonChecked);
+      setIsCheckedPaw(userData.pawChecked);
+      setIsCheckedPainting(userData.paintingChecked);
     } else {
       parsedData.push(formData);
       alert('Your data has been successfully added!');
@@ -77,12 +82,31 @@ const NewsletterEvidence = () => {
     // save the updated data to localStorage with field 'formData'
     localStorage.setItem('formData', JSON.stringify(parsedData));
 
+    // save the updated data to localStorage with field 'formData'
+    localStorage.setItem('formData', JSON.stringify(parsedData));
+
+    // if user not found, add it to userList
+    if (userIndex === -1) {
+      setUserList((prevUserList) => [...prevUserList, formData]);
+    }
+
     handleCancel();
   };
 
   return (
     <div className={evidenceWrapper}>
       <form action="" className={pageForm}>
+        <span>
+          Enter Your name and select picture and I will save it in locale
+          storage
+        </span>
+        <FaSearch className={searchIcon} />
+        <input
+          type="text"
+          placeholder="Search by username"
+          className={searchInput}
+          onChange={handleSearch}
+        />
         <UserNameInput
           value={value}
           setValue={setValue}

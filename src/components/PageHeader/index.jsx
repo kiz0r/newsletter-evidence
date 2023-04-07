@@ -1,5 +1,4 @@
 import { FaCode } from 'react-icons/fa';
-
 import './HeaderStyles.sass';
 
 const PageHeader = () => {
