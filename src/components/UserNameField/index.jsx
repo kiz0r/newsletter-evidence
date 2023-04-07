@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import classNames from 'classnames';
 
 import styles from './UserNameInput.module.sass';
@@ -8,7 +8,7 @@ const { userNameInput, inputValid, inputInvalid, formLabel } = styles;
 const USERNAME_REG_EXP =
   /^[A-Z][a-z]{1,19}(-[A-Z][a-z]{1,19})?\s[A-Z][a-z]{1,19}(-[A-Z][a-z]{1,19})?$/;
 
-const UserNameInput = ({ value, setValue, isValid, setIsValid }) => {
+const UserNameField = ({ value, setValue, isValid, setIsValid }) => {
   function validateUserNameInput() {
     setIsValid(USERNAME_REG_EXP.test(value));
   }
@@ -39,4 +39,4 @@ const UserNameInput = ({ value, setValue, isValid, setIsValid }) => {
   );
 };
 
-export default UserNameInput;
+export default UserNameField;

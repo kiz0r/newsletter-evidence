@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import UserNameInput from './../UserNameInput';
+import UserNameField from '../UserNameField';
 import CheckBoxBtn from '../CheckBoxBtn';
 
 import moonIcon from './../../common/images/moonIcon.png';
@@ -46,7 +46,6 @@ const NewsletterEvidence = () => {
     setIsCheckedPaw(INITIAL_FORM_STATE.isCheckedPaw);
     setIsCheckedPainting(INITIAL_FORM_STATE.isCheckedPainting);
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -67,45 +66,47 @@ const NewsletterEvidence = () => {
     const userIndex = parsedData.findIndex((data) => data.username === value);
 
     if (userIndex !== -1) {
+      // update existing user data
       parsedData[userIndex] = formData;
-      // load user data from localStorage and set isChecked* values
+      const userData = parsedData[userIndex];
+      setIsCheckedMoon(userData.moonChecked);
+      setIsCheckedPaw(userData.pawChecked);
+      setIsCheckedPainting(userData.paintingChecked);
+      alert('Your data has been successfully updated!');
+    } else {
+      // add new user data
+      parsedData.push(formData);
+      alert('Your data has been successfully added!');
+    }
+
+    setFoundUser(true);
+
+    localStorage.setItem('formData', JSON.stringify(parsedData));
+
+    handleCancel();
+  };
+
+  useEffect(() => {
+    const storedData = localStorage.getItem('formData');
+    let parsedData = [];
+    if (storedData) {
+      parsedData = JSON.parse(storedData);
+    }
+
+    const userIndex = parsedData.findIndex((data) => data.username === value);
+    if (userIndex !== -1) {
       const userData = parsedData[userIndex];
       setIsCheckedMoon(userData.moonChecked);
       setIsCheckedPaw(userData.pawChecked);
       setIsCheckedPainting(userData.paintingChecked);
       setFoundUser(!foundUser);
-      alert('Your data has been successfully updated!');
-    } else {
-      parsedData.push(formData);
-      alert('Your data has been successfully added!');
     }
-
-    // save the updated data to localStorage with field 'formData'
-    localStorage.setItem('formData', JSON.stringify(parsedData));
-
-    // if user not found, add it to userList
-    if (userIndex === -1) {
-      setUserList((prevUserList) => [...prevUserList, formData]);
-    }
-
-    handleCancel();
-  };
-
-  // useEffect(() => {
-  //   const existingArray = JSON.parse(localStorage.getItem('formData'));
-  //   const existingUser = JSON.parse(existingArray.getItem('username'));
-  //   console.log('existingUser :>> ', existingUser);
-  //   if (existingUser) {
-  //     setIsCheckedMoon(existingUser.isCheckedMoon);
-  //     setIsCheckedPaw(existingUser.isCheckedPaw);
-  //     setIsCheckedPainting(existingUser.isCheckedPainting);
-  //   }
-  // }, []);
+  }, [value]);
 
   return (
     <div className={evidenceWrapper}>
       <form action="" className={pageForm}>
-        <UserNameInput
+        <UserNameField
           value={value}
           setValue={setValue}
           isValid={isValid}
@@ -129,24 +130,24 @@ const NewsletterEvidence = () => {
           checkBoxName="isCheckedPainting"
           imageSrc={paintingIcon}
         />
-        <div className={btnWrapper}>
-          <CustomButton
-            type="submit"
-            onClick={handleSubmit}
-            modClassName={saveBtn}
-          >
-            Save
-          </CustomButton>
-          <CustomButton
-            type="button"
-            onClick={handleCancel}
-            modClassName={cancelBtn}
-          >
-            Cancel
-          </CustomButton>
-        </div>
       </form>
-      {foundUser ? <div>User found</div> : <div>User not found</div>}
+
+      <div className={btnWrapper}>
+        <CustomButton
+          type="submit"
+          onClick={handleSubmit}
+          modClassName={saveBtn}
+        >
+          Save
+        </CustomButton>
+        <CustomButton
+          type="button"
+          onClick={handleCancel}
+          modClassName={cancelBtn}
+        >
+          Cancel
+        </CustomButton>
+      </div>
     </div>
   );
 };
