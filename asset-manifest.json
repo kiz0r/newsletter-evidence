@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/newsletter-evidence/static/css/main.2473f35f.css",
+    "main.js": "/newsletter-evidence/static/js/main.d50c727c.js",
+    "index.html": "/newsletter-evidence/index.html",
+    "main.2473f35f.css.map": "/newsletter-evidence/static/css/main.2473f35f.css.map",
+    "main.d50c727c.js.map": "/newsletter-evidence/static/js/main.d50c727c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2473f35f.css",
+    "static/js/main.d50c727c.js"
+  ]
+}
