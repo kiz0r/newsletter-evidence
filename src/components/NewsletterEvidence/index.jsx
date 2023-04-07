@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import UserNameInput from './../UserNameInput';
 import CheckBoxBtn from '../CheckBoxBtn';
@@ -37,6 +37,7 @@ const NewsletterEvidence = () => {
   );
 
   const [userList, setUserList] = useState([]);
+  const [foundUser, setFoundUser] = useState(false);
 
   // used to reset the form to the initial state
   const handleCancel = () => {
@@ -73,13 +74,11 @@ const NewsletterEvidence = () => {
       setIsCheckedMoon(userData.moonChecked);
       setIsCheckedPaw(userData.pawChecked);
       setIsCheckedPainting(userData.paintingChecked);
+      setFoundUser(!foundUser);
     } else {
       parsedData.push(formData);
       alert('Your data has been successfully added!');
     }
-
-    // save the updated data to localStorage with field 'formData'
-    localStorage.setItem('formData', JSON.stringify(parsedData));
 
     // save the updated data to localStorage with field 'formData'
     localStorage.setItem('formData', JSON.stringify(parsedData));
@@ -91,6 +90,17 @@ const NewsletterEvidence = () => {
 
     handleCancel();
   };
+
+  // useEffect(() => {
+  //   const existingArray = JSON.parse(localStorage.getItem('formData'));
+  //   const existingUser = JSON.parse(existingArray.getItem('username'));
+  //   console.log('existingUser :>> ', existingUser);
+  //   if (existingUser) {
+  //     setIsCheckedMoon(existingUser.isCheckedMoon);
+  //     setIsCheckedPaw(existingUser.isCheckedPaw);
+  //     setIsCheckedPainting(existingUser.isCheckedPainting);
+  //   }
+  // }, []);
 
   return (
     <div className={evidenceWrapper}>
@@ -132,6 +142,7 @@ const NewsletterEvidence = () => {
           </CustomButton>
         </div>
       </form>
+      {foundUser ? <div>User found</div> : <div>User not found</div>}
     </div>
   );
 };
