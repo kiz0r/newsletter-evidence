@@ -1,7 +1,17 @@
 @import '../../common/styles/extends'
 @import '../../common/styles/vars'
+@import '../../common/styles/mixins'
 
 footer
   @extend %flex-container
-  background-color: $main-bg
-  margin-top: auto
+  background-color: $footer-bg
+  padding: 24px 0
+  gap: 24px
+  &>p
+    font-size: 18px
+    font-weight: 500
+  ul
+    @include flex-container($fd:row)
+    gap: 20px
+  li
+    font-size: 24px

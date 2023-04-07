@@ -1,15 +1,18 @@
 @import '../../common/styles/vars'
 @import '../../common/styles/mixins'
+@import '../../common/styles/extends'
+
 
 .evidenceWrapper
-  @include flex-container
-  min-width: 400px
+  @extend %flex-container
+  min-width: 350px
   width: 100%
   max-width: 600px
 
 .pageForm 
   padding: 36px 0
-  @include flex-container
+  @extend %flex-container
+
 
 .messageBox 
   height: 24px
@@ -17,8 +20,10 @@
   font-weight: 500
 
 .btnWrapper
-  @include flex-container($jc:space-between, $fd:row)
+  @include flex-container($jc:space-evenly, $fd:row)
+  min-width: 200px
   width: 100%
+  max-width: 400px
   margin: 24px 0
 
 .saveBtn
